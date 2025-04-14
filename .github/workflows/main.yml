@@ -11,36 +11,55 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: /workspaces/-zero-touch-helpdesk-
+        working-directory: ${{ github.workspace }}  # More reliable than hardcoded path
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # Ensures full clone for version detection
+          fetch-depth: 0
 
       - name: Set up Python 3.12
         uses: actions/setup-python@v4
         with:
           python-version: "3.12"
-          cache: 'pip'  # Enable caching for faster builds
+          cache: 'pip'
+          cache-dependency-path: 'requirements.txt'  # Specific cache key
 
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -e .[dev]  # Install in editable mode with dev dependencies
-          pip install pytest slack_bolt python-dotenv psutil streamlit
+          pip install -e .[dev]
+          pip install -r requirements.txt  # Explicit installation
+          pip install pytest-cov
 
       - name: Run tests
         env:
           PYTHONPATH: ${{ github.workspace }}
+          SLACK_BOT_TOKEN: "mock_token"  # Required for imports
+          SLACK_APP_TOKEN: "mock_token"
         run: |
-          python -m pytest tests/ -v --cov=src --cov-report=xml
+          python -m pytest tests/ -v --cov=src --cov-report=xml --cov-fail-under=80  # Enforce 80% coverage
 
       - name: Verify imports
+        env:
+          PYTHONPATH: ${{ github.workspace }}
         run: |
-          python -c "from src.automations.password_reset import generate_temp_password; print('✅ Import successful!')"
+          python -c "
+          try:
+              from src.automations.password_reset import generate_temp_password
+              print('✅ Import successful!')
+          except ImportError as e:
+              print(f'❌ Import failed: {e}')
+              raise
+          "
 
       - name: Upload coverage
         uses: codecov/codecov-action@v3
-        if: success()  # Only run if previous steps succeeded
+        if: success()
+
+      - name: Build documentation
+        if: success()
+        run: |
+          pip install mkdocs-material
+          mkdocs build --site-dir ./docs
