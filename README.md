@@ -1,20 +1,43 @@
-Zero-Touch IT Helpdesk Bot 🤖
-*A Slack bot that automates 40% of repetitive IT tickets (password resets, Wi-Fi troubleshooting, and proactive alerts)
+🔧 Zero-Touch Helpdesk Bot for Slack 🤖
+Automating IT support. Saving time. Empowering teams.
+
+🧠 Overview:-
+👉Zero-Touch Helpdesk is an intelligent Slack bot designed to automate 40%+ of repetitive IT helpdesk tickets — such as password resets and WiFi troubleshooting — through real-time Slack interactions.
+Built in just weeks as part of the Agentforce Hackathon, this project showcases how AI and automation can streamline enterprise operations, reduce response time, and give IT teams their time back.
+
+🚀 Key Features
+🔐 Instant Password Reset
+Generates secure, temporary credentials for users in seconds.
+
+📶 WiFi Troubleshooting Assistant
+Guides users through common connectivity issues automatically.
+
+📡 Real-time Slack Integration
+Responds to /helpdesk commands and shortcuts with interactive modals and buttons.
+
+⚙️ Salesforce Ticket Generation (in progress)
+Automatically logs interactions to Salesforce for auditing and compliance.
+
+🔒 Security Focused
+👉OAuth 2.0 for Slack + Salesforce
+👉No data persistence
+👉All actions logged for traceability
 
 
+🛠️Tech Stack:-
+👉Component	Technology Used
+🔥 Backend Python (Slack Bolt)
+🔥 Data Storage Google Sheets (or CSV)
+🔥 Dashboard Streamlit
+🔥 Hosting	GitHub Codespaces (Dev) 
+🔥 Python 3.11
+🔥 Slack Bolt SDK
+🔥 Socket Mode
+🔥 Prometheus (metrics)
+🔥 Dotenv (env config)
+🔥 GitHub Actions (CI for testing)
 
-🚀 Features
-/helpdesk command: Instant IT support via Slack.
 
-One-click fixes:
-
-🔑 Auto-generate temporary passwords.
-
-📶 Wi-Fi troubleshooting guides.
-
-Proactive alerts: Disk space warnings, system health checks.
-
-Admin dashboard: Streamlit analytics for ticket tracking.
 
 
 
@@ -55,47 +78,40 @@ Admin dashboard: Streamlit analytics for ticket tracking.
 ├── requirements.txt      # Dependencies
 └── README.md            # Project overviewing deepseek_bash_20250424_f051ea (1).sh…]()
 
-Tech Stack
-Component	Technology Used
-Backend	Python (Slack Bolt)
-Data Storage	Google Sheets (or CSV)
-Dashboard	Streamlit
-Hosting	GitHub Codespaces (Dev) 
 
 
 ⚡ Quick Start
 1. Prerequisites
 Python 3.8+
+🔥Slack workspace (admin permission  (https://app.slack.com/client/T08MB5YCYPR/D08MBLJ6XAT))
 
-Slack workspace (admin permission  (https://app.slack.com/client/T08MB5YCYPR/D08MBLJ6XAT))
+🧪 Project Status:-
+✅ Core logic complete
+✅ Slack actions (password reset, WiFi help) live
+✅ Working Slack bot via Socket Mode
+⚙️ Salesforce integration and dashboard still in progress
+
+🖥️ Demo (Coming Soon)
+Stay tuned for a full walkthrough video + demo screenshots.
 
 
-2. Setup
-3. # Clone repo
+📦 Getting Started
+1. Clone the repo
 git clone https://github.com/Samikshacode934/-zero-touch-helpdesk-.git
 cd -zero-touch-helpdesk-
 
-# Install dependencies
-pip install -r requirements.txt
 
-# Add Slack tokens to .env
-echo "SLACK_BOT_TOKEN=xoxb-BOT-token" > .env
-echo "SLACK_APP_TOKEN=xapp-APP-token" >> .env
+2. Create your .env file
+Copy .env.example to .env and fill in:
+SLACK_BOT_TOKEN=xoxb-...
+SLACK_APP_TOKEN=xapp-1-...
 
 
-3. Run the Bot
-4. python src/bot/slack_bot.py
+🤖3. Run the bot
+  python src/bot/slack_bot.py
 
-   4. Access Dashboard
-   5. streamlit run src/dashboard.py
-  
-
-  🙋 FAQ
-Q: How do I test the bot?
-A: Type /helpdesk in any Slack channel after running slack_bot.py.
-
-Q: Where’s the demo video?
-A: Watch here. (Add your YouTube link)
+You should see⬇️
+⚡️ Bolt app is running!
 
 
 flowchart TD
