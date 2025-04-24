@@ -19,7 +19,7 @@ Admin dashboard: Streamlit analytics for ticket tracking.
 
 
 🛠️ Technical Architecture
-zero-touch-helpdesk/
+[Uploadzero-touch-helpdesk/
 ├── .github/                  # GitHub configs
 │   └── workflows/
 │       └── test.yml          # CI/CD pipeline
@@ -53,8 +53,7 @@ zero-touch-helpdesk/
 ├── LICENSE
 ├── pytest.ini            # Pytest config
 ├── requirements.txt      # Dependencies
-└── README.md            # Project overview
-
+└── README.md            # Project overviewing deepseek_bash_20250424_f051ea (1).sh…]()
 
 Tech Stack
 Component	Technology Used
