@@ -1,0 +1,13 @@
+# Development requirements
+-e .  # Install package in editable mode
+
+# Testing
+pytest>=7.0.0
+pytest-cov>=3.0.0
+
+# Formatting
+black==23.7.0
+flake8==6.0.0
+
+# Documentation
+mkdocs-material>=9.0.0
