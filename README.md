@@ -7,15 +7,18 @@ Built in just weeks as part of the Agentforce Hackathon, this project showcases 
 
 🚀 Key Features
 🔐 Instant Password Reset
-Generates secure, temporary credentials for users in seconds.
+Generates secure, temporary credentials for users in seconds. | ✅ Working |
 
 📶 WiFi Troubleshooting Assistant
-Guides users through common connectivity issues automatically.
+Guides users through common connectivity issues automatically.| ✅ Working |
+
+| 🧠 AI Ticket Classification and openai for language model integration| GPT-3.5 powered ticket        categorization | 🚧  MVP(in progress) |
+  Respond to /ticket commands and shortcuts with intractive modals and buttons.
 
 📡 Real-time Slack Integration
 Responds to /helpdesk commands and shortcuts with interactive modals and buttons.
 
-⚙️ Salesforce Ticket Generation (in progress)
+⚙️ Salesforce Ticket Generation 🚧 (in planed)
 Automatically logs interactions to Salesforce for auditing and compliance.
 
 🔒 Security Focused
@@ -25,8 +28,10 @@ Automatically logs interactions to Salesforce for auditing and compliance.
 
 
 🛠️Tech Stack:-
-👉Component	Technology Used
-🔥 Backend Python (Slack Bolt)
+👉Component	Technology Used:-
+🔥 Backend: Python + (Slack Bolt)
+ **AI**: OpenAI GPT-3.5-turbo
+- **Metrics**: Prometheus + Grafana
 🔥 Data Storage Google Sheets (or CSV)
 🔥 Dashboard Streamlit
 🔥 Hosting	GitHub Codespaces (Dev) 
@@ -51,6 +56,7 @@ Automatically logs interactions to Salesforce for auditing and compliance.
 ├── src/
 │   ├── automations/         # Core logic
 │   │   ├── __init__.py
+|   |   |__ disk_alert.py
 │   │   ├── password_reset.py
 │   │   └── wifi_troubleshoot.py
 │   ├── bot/                # Slack bot
@@ -63,6 +69,7 @@ Automatically logs interactions to Salesforce for auditing and compliance.
 │   ├── __init__.py
 │   ├── conftest.py        # Pytest fixtures
 │   └── test_bot.py        # Test cases
+|   |__ test_wifi.py       # Test cases
 ├── website/               # Web UI (optional)
 │   ├── static/
 │   │   └── style.css
@@ -76,8 +83,9 @@ Automatically logs interactions to Salesforce for auditing and compliance.
 ├── LICENSE
 ├── pytest.ini            # Pytest config
 ├── requirements.txt      # Dependencies
-└── README.md            # Project overviewing deepseek_bash_20250424_f051ea (1).sh…]()
-
+|── README.md            # Project overviewing deepseek_bash_20250424_f051ea (1).sh…]()
+|__ setup.py
+|__ ticket.csv
 
 
 ⚡ Quick Start
@@ -89,19 +97,22 @@ Python 3.8+
 ✅ Core logic complete
 ✅ Slack actions (password reset, WiFi help) live
 ✅ Working Slack bot via Socket Mode
+
 ⚙️ Salesforce integration and dashboard still in progress
 
-🖥️ Demo (Coming Soon)
-Stay tuned for a full walkthrough video + demo screenshots.
-
+🖥️ Demo 
+https://youtu.be/9oIXro1aURg?si=PKSVSU7u4W7zk36R
 
 📦 Getting Started
+Installation:-
 1. Clone the repo
 git clone https://github.com/Samikshacode934/-zero-touch-helpdesk-.git
 cd -zero-touch-helpdesk-
+pip install -r requirements.txt
 
 
 2. Create your .env file
+Configuration:-
 Copy .env.example to .env and fill in:
 SLACK_BOT_TOKEN=xoxb-...
 SLACK_APP_TOKEN=xapp-1-...
@@ -115,7 +126,8 @@ You should see⬇️
 
 
 flowchart TD
-    A[Slack Command] --> B[Bot Server]
+    A[Slack Command] --> B[Python Bot]
     B --> C[Password Reset/Wi-Fi Automation]
-    C --> D[Log to CSV/Sheets]
-    D --> E[Streamlit Dashboard]
+    C --> E[AI Classifier]
+    D --> D[Log to CSV/Sheets]
+    E --> E[Streamlit Dashboard]
